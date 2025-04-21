@@ -2,6 +2,8 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import corsOptions from "./middlewares/cors";
+import http from "http";
+import https from "https";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -22,3 +24,6 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Listening in http://${HOST_IP}:${PORT}`);
 });
+
+const httpServer = http.createServer(app);
+httpServer.listen(80);
